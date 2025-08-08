@@ -12,12 +12,23 @@ const Note = require("../model/noteModel");
             if (existingUser.password !== password) {
                 return res.status(401).json({ message: "Incorrect password" });
             }
+
+            // ✅ Set cookie
+            res.cookie('isLoggedIn', 'true', {
+                httpOnly: false,        // allows frontend access (just for demo purposes)
+                maxAge: 24 * 60 * 60 * 1000,  // 1 day
+            });
             res.status(200).json({ message: "Login successful", user: existingUser });
         } catch (error) {
             console.error("Login error:", error);
             res.status(500).json({ message: "Internal server error" });
         }
 };
+
+exports.postLogout = (req,res) => {
+    res.clearCookie('isLoggedin');
+    res.status(200).json({message : "Logout successfull"});
+}
 
 exports.postRegister = async(req,res,next) => {
     try {

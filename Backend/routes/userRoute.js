@@ -9,6 +9,7 @@ Routes.get('/notes',userController.getNotes);
 Routes.delete('/delete/:id',userController.deleteNote);
 Routes.put('/notes/update/:id',userController.updateNote);
 Routes.get('/note/:id',userController.getNoteById);
+Routes.post('/logout',userController.postLogout);
 
 // Routes.post('/logout',userController.postLogout);
 // Routes.post('/check-auth',userController.checkAuth);

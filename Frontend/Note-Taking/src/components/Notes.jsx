@@ -1,16 +1,22 @@
-import { use } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Notes = ({ searchTerm }) => {
   const [notes, setNotes] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const loginCookie = Cookies.get("isLoggedIn");
+    setIsLoggedIn(loginCookie === "true");
+  }, []);
 
   //Fetching the notes from the database
   useEffect(() => {
@@ -43,28 +49,30 @@ const Notes = ({ searchTerm }) => {
       {/* Add Note Button */}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2 className="fw-bold">📝 Your Notes</h2>
-        <Link
-          to="/createNote"
-          className="btn btn-lg px-4 py-2 rounded-pill d-inline-flex align-items-center gap-2 shadow-sm"
-          style={{
-            background: "linear-gradient(to right, #4facfe, #00f2fe)",
-            color: "#fff",
-            fontWeight: "600",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-            transition: "all 0.3s ease-in-out",
-          }}
-          onMouseOver={(e) => {
-            e.target.style.transform = "scale(1.05)";
-            e.target.style.boxShadow = "0 6px 16px rgba(0, 0, 0, 0.2)";
-          }}
-          onMouseOut={(e) => {
-            e.target.style.transform = "scale(1)";
-            e.target.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.1)";
-          }}
-        >
-          <i className="bi bi-plus-lg"></i>
-          Add Note
-        </Link>
+        {isLoggedIn && (
+          <Link
+            to="/createNote"
+            className="btn btn-lg px-4 py-2 rounded-pill d-inline-flex align-items-center gap-2 shadow-sm"
+            style={{
+              background: "linear-gradient(to right, #4facfe, #00f2fe)",
+              color: "#fff",
+              fontWeight: "600",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+              transition: "all 0.3s ease-in-out",
+            }}
+            onMouseOver={(e) => {
+              e.target.style.transform = "scale(1.05)";
+              e.target.style.boxShadow = "0 6px 16px rgba(0, 0, 0, 0.2)";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.transform = "scale(1)";
+              e.target.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.1)";
+            }}
+          >
+            <i className="bi bi-plus-lg"></i>
+            Add Note
+          </Link>
+        )}
       </div>
 
       {/* Notes Grid */}
