@@ -14,7 +14,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/login",
+        "https://note-vault-1-z260.onrender.com/api/login",
         { email, password },
         { withCredentials: true } // ✅ important to allow cookies
       );
