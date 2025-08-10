@@ -31,7 +31,7 @@ const CreateNoteForm = () => {
   };
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/createNote",
+        "https://note-vault-1-z260.onrender.com/api/createNote",
         formattedNote
       );
       toast.success("Note created successfully!");
