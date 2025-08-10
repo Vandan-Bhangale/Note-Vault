@@ -9,7 +9,7 @@ const app = express();
 const URI = "mongodb+srv://admin:admin@blog.v0kpkyu.mongodb.net/Blog?retryWrites=true&w=majority&appName=Blog"
 
 //Local modules
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: 'https://note-vault-frontend-936q.onrender.com', credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 const PORT = 3000;
