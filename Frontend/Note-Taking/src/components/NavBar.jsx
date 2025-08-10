@@ -16,7 +16,7 @@ const NavBar = ({ searchTerm, setSearchTerm }) => {
   // Logout function
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:3000/api/logout', {}, { withCredentials: true });
+      await axios.post('https://note-vault-1-z260.onrender.com/api/logout', {}, { withCredentials: true });
       Cookies.remove('isLoggedIn');
       setIsLoggedIn(false);
       navigate('/');
