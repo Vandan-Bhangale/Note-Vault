@@ -31,7 +31,7 @@ project/
 └── README.md
 ```
 ## 🌐 Live Links
-- **Frontend:** https://note-vault-frontend.onrender.com
+- **Frontend:** https://note-vault-frontend-936q.onrender.com/
 - **Backend API:** https://note-vault-1-z260.onrender.com
 
 ---
