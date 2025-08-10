@@ -34,7 +34,7 @@ const Notes = ({ searchTerm }) => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/delete/${id}`
+        `https://note-vault-1-z260.onrender.com/api/delete/${id}`
       );
       toast.success("Note deleted successfully!");
       setNotes(notes.filter((note) => note._id !== id));
