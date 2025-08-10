@@ -21,7 +21,7 @@ const Notes = ({ searchTerm }) => {
   //Fetching the notes from the database
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/notes")
+      .get("https://note-vault-1-z260.onrender.com/api/notes")
       .then((res) => {
         setNotes(res.data); // Set the notes from database
       })
