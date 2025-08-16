@@ -32,7 +32,7 @@ const CreateNoteForm = () => {
     try {
       const response = await axios.post(
         "http://localhost:3000/api/createNote",
-        formattedNote
+        formattedNote,{withCredentials: true}
       );
       toast.success("Note created successfully!");
       Navigate("/notes")

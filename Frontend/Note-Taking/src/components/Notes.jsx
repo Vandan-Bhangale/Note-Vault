@@ -8,20 +8,19 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const Notes = ({ searchTerm }) => {
+const Notes = ({ searchTerm,isLoggedIn,setIsLoggedIn }) => {
   const [notes, setNotes] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const loginCookie = Cookies.get("isLoggedIn");
-    setIsLoggedIn(loginCookie === "true");
-  }, []);
+  // useEffect(() => {
+  //   const loginCookie = Cookies.get("isLoggedIn");
+  //   setIsLoggedIn(loginCookie === "true");
+  // }, []);
 
   //Fetching the notes from the database
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/notes")
+      .get("http://localhost:3000/api/notes",{withCredentials: true})
       .then((res) => {
         setNotes(res.data); // Set the notes from database
       })
@@ -34,7 +33,7 @@ const Notes = ({ searchTerm }) => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/delete/${id}`
+        `http://localhost:3000/api/delete/${id}`,{withCredentials: true}
       );
       toast.success("Note deleted successfully!");
       setNotes(notes.filter((note) => note._id !== id));
@@ -77,7 +76,11 @@ const Notes = ({ searchTerm }) => {
 
       {/* Notes Grid */}
       <div className="row">
-        {notes.length === 0 ? (
+        {!isLoggedIn ? (
+          <p className="text-muted text-center">
+            Please login to see your notes.
+          </p>
+        ) : notes.length === 0 ? (
           <p className="text-muted text-center">
             No notes yet. Click "Add Note" to get started!
           </p>

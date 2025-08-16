@@ -3,15 +3,15 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
 
-const NavBar = ({ searchTerm, setSearchTerm }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const NavBar = ({ searchTerm, setSearchTerm,isLoggedIn,setIsLoggedIn }) => {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   // Check cookie on component mount
-  useEffect(() => {
-    const loginCookie = Cookies.get('isLoggedIn');
-    setIsLoggedIn(loginCookie === 'true');
-  }, []);
+  // useEffect(() => {
+  //   const loginCookie = Cookies.get('isLoggedIn');
+  //   setIsLoggedIn(loginCookie === 'true');
+  // }, []);
 
   // Logout function
   const handleLogout = async () => {

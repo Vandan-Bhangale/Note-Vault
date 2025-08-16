@@ -15,7 +15,7 @@ const EditNoteForm = () => {
   useEffect(() => {
     const fetchNote = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/note/${id}`);
+        const res = await axios.get(`http://localhost:3000/api/note/${id}`,{withCredentials: true});
         setTitle(res.data.title);
         setDescription(res.data.description);
         setLoading(false);
@@ -33,7 +33,7 @@ const EditNoteForm = () => {
       await axios.put(`http://localhost:3000/api/notes/update/${id}`, {
         title,
         description,
-      });
+      },{withCredentials: true});
       toast.success("Note updated successfully!");
       navigate("/notes"); // Redirect to notes page after update
     } catch (err) {
