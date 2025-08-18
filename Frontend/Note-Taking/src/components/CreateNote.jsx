@@ -31,7 +31,7 @@ const CreateNoteForm = () => {
   };
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/createNote",
+        `${import.meta.env.VITE_GENERAL_API}/api/createNote`,
         formattedNote,{withCredentials: true}
       );
       toast.success("Note created successfully!");
