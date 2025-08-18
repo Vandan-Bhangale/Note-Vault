@@ -24,7 +24,7 @@ Users can **create, edit, delete, and organize notes** with secure login functio
 ---
 
 ## Folder Structure
-
+```
 note-vault/
 ├── backend/
 │ ├── controllers/
@@ -37,7 +37,7 @@ note-vault/
 │ ├── .env
 │ ├── package.json
 ├── README.md
-
+```
 ---
 
 ## Getting Started
