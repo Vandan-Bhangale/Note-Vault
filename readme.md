@@ -41,7 +41,7 @@ note-vault/
 ---
 
 ## Getting Started
-To see the live demo click here👇
+To see the live demo click here👉
 (https://note-vault-frontend-bay.vercel.app/)
 
 ### Clone the repository
