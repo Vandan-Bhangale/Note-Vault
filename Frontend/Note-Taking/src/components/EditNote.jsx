@@ -15,7 +15,7 @@ const EditNoteForm = () => {
   useEffect(() => {
     const fetchNote = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/note/${id}`,{withCredentials: true});
+        const res = await axios.get(`${import.meta.env.VITE_GENERAL_API}/api/note/${id}`,{withCredentials: true});
         setTitle(res.data.title);
         setDescription(res.data.description);
         setLoading(false);
@@ -30,7 +30,7 @@ const EditNoteForm = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/api/notes/update/${id}`, {
+      await axios.put(`${import.meta.env.VITE_GENERAL_API}/api/notes/update/${id}`, {
         title,
         description,
       },{withCredentials: true});

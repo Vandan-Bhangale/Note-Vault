@@ -16,7 +16,8 @@ const NavBar = ({ searchTerm, setSearchTerm,isLoggedIn,setIsLoggedIn }) => {
   // Logout function
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:3000/api/logout', {}, { withCredentials: true });
+      console.log(`${import.meta.env.VITE_GENERAL_API}/api/logout`);
+      await axios.post(`${import.meta.env.VITE_GENERAL_API}/api/logout`, {}, { withCredentials: true });
       Cookies.remove('isLoggedIn');
       setIsLoggedIn(false);
       navigate('/');

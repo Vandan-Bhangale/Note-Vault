@@ -5,9 +5,10 @@ const userRoute = require("./routes/userRoute");
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const mognodbStore = require('connect-mongodb-session')(session);
+require('dotenv').config();
 
 const app = express();
-const URI = "mongodb+srv://admin:admin@blog.v0kpkyu.mongodb.net/Blog?retryWrites=true&w=majority&appName=Blog";
+const URI = process.env.DATABASE_URL;
 
 const store = new mognodbStore({
   uri: URI,
@@ -15,14 +16,14 @@ const store = new mognodbStore({
 })
 
 //Local modules
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 const PORT = 3000;
 
 app.use(session ({
   name: 'sessionId',
-  secret: 'mySecretKey',  
+  secret: process.env.SESSION_SECRET,  
   resave: false,
   saveUninitialized: false,
   cookie: {

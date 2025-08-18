@@ -14,7 +14,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/login",
+        `${import.meta.env.VITE_GENERAL_API}/api/login`,
         { email, password },
         { withCredentials: true } // ✅ important to allow cookies
       );

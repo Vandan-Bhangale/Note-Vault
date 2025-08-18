@@ -20,7 +20,7 @@ const Notes = ({ searchTerm,isLoggedIn,setIsLoggedIn }) => {
   //Fetching the notes from the database
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/notes",{withCredentials: true})
+      .get(`${import.meta.env.VITE_GENERAL_API}/api/notes`,{withCredentials: true})
       .then((res) => {
         setNotes(res.data); // Set the notes from database
       })
@@ -33,7 +33,7 @@ const Notes = ({ searchTerm,isLoggedIn,setIsLoggedIn }) => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/delete/${id}`,{withCredentials: true}
+        `${import.meta.env.VITE_GENERAL_API}/api/delete/${id}`,{withCredentials: true}
       );
       toast.success("Note deleted successfully!");
       setNotes(notes.filter((note) => note._id !== id));

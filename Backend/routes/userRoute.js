@@ -11,7 +11,7 @@ Routes.put('/notes/update/:id',userController.updateNote);
 Routes.get('/note/:id',userController.getNoteById);
 Routes.post('/logout',userController.postLogout);
 Routes.get('/status',userController.getStatus);
-Routes.post('/logou',userController.postLogout);
+// Routes.post('/logout',userController.postLogout);
 
 // Routes.post('/logout',userController.postLogout);
 // Routes.post('/check-auth',userController.checkAuth);
