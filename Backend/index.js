@@ -21,18 +21,33 @@ app.use(express.json());
 app.use(cookieParser());
 const PORT = 3000;
 
-app.use(session ({
+// app.use(session ({
+//   name: 'sessionId',
+//   secret: process.env.SESSION_SECRET,  
+//   resave: false,
+//   saveUninitialized: false,
+//   cookie: {
+//     httpOnly: true,
+//     secure: false, 
+//     maxAge: 24 * 60 * 60 * 1000 
+//   },
+//   store
+// }));
+
+app.use(session({
   name: 'sessionId',
   secret: process.env.SESSION_SECRET,  
   resave: false,
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    secure: false, 
+    secure: true,       // ✅ always true since Render uses HTTPS
+    sameSite: "none",   // ✅ needed for cross-site (Vercel -> Render)
     maxAge: 24 * 60 * 60 * 1000 
   },
   store
 }));
+
 
 app.use('/api', userRoute);
 
