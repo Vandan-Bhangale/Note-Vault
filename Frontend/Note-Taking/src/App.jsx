@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/status`, {
+        const response = await fetch(`${import.meta.env.VITE_GENERAL_URL}/api/status`, {
           method: "GET",
           credentials: "include",
         });
