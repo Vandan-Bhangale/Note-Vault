@@ -8,6 +8,9 @@ const mognodbStore = require('connect-mongodb-session')(session);
 require('dotenv').config();
 
 const app = express();
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 const URI = process.env.DATABASE_URL;
 
 const store = new mognodbStore({
@@ -21,6 +24,7 @@ app.use(express.json());
 app.use(cookieParser());
 const PORT = 3000;
 
+//This session is for local development
 // app.use(session ({
 //   name: 'sessionId',
 //   secret: process.env.SESSION_SECRET,  
@@ -34,6 +38,7 @@ const PORT = 3000;
 //   store
 // }));
 
+//This session is for deployed version on render and vercel
 app.use(session({
   name: 'sessionId',
   secret: process.env.SESSION_SECRET,  
