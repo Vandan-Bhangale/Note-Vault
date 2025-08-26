@@ -24,6 +24,8 @@ app.use(express.json());
 app.use(cookieParser());
 const PORT = 3000;
 
+app.set("trust proxy", 1);  // trust first proxy (Render/Heroku/etc.)
+
 //This session is for local development
 // app.use(session ({
 //   name: 'sessionId',
