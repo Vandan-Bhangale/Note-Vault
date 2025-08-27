@@ -8,19 +8,16 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const Notes = ({ searchTerm,isLoggedIn,setIsLoggedIn }) => {
+const Notes = ({ searchTerm, isLoggedIn, setIsLoggedIn }) => {
   const [notes, setNotes] = useState([]);
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   const loginCookie = Cookies.get("isLoggedIn");
-  //   setIsLoggedIn(loginCookie === "true");
-  // }, []);
 
   //Fetching the notes from the database
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_GENERAL_API}/api/notes`,{withCredentials: true})
+      .get(`${import.meta.env.VITE_GENERAL_API}/api/notes`, {
+        withCredentials: true,
+      })
       .then((res) => {
         setNotes(res.data); // Set the notes from database
       })
@@ -33,7 +30,8 @@ const Notes = ({ searchTerm,isLoggedIn,setIsLoggedIn }) => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `${import.meta.env.VITE_GENERAL_API}/api/delete/${id}`,{withCredentials: true}
+        `${import.meta.env.VITE_GENERAL_API}/api/delete/${id}`,
+        { withCredentials: true }
       );
       toast.success("Note deleted successfully!");
       setNotes(notes.filter((note) => note._id !== id));
@@ -114,6 +112,18 @@ const Notes = ({ searchTerm,isLoggedIn,setIsLoggedIn }) => {
                     <h5 className="card-title fw-semibold mb-2 text-primary">
                       {note.title}
                     </h5>
+
+                    {/* Timestamp */}
+                    <p className="text-secondary small fw-bold mb-2">
+                      🕒{" "}
+                      {new Date(note.createdAt).toLocaleString("en-US", {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </p>
 
                     {/* Note Description */}
                     <p
