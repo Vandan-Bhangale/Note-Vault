@@ -13,6 +13,9 @@ Users can **create, edit, delete, and organize notes** with secure login functio
 - Responsive and intuitive React frontend
 - User-specific notes with session management
 
+⚠️ **Mobile Display Notice:**  
+The search bar may not appear on smaller screen sizes (mobile phones) because of the current responsive design. This will be addressed in a future update.
+
 ---
 
 ## Tech Stack
