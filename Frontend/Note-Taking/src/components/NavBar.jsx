@@ -29,23 +29,25 @@ const NavBar = ({ searchTerm, setSearchTerm, isLoggedIn, setIsLoggedIn }) => {
   };
 
   return (
-     <>
+      <>
       <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
-        <div className="container-fluid">
+        <div className="container-fluid d-flex justify-content-between align-items-center">
           {/* App Name */}
           <Link className="navbar-brand fw-bold text-primary fs-4" to="/">
             📝 NoteVault
           </Link>
 
-          {/* Search Box */}
-          <input
-            className="form-control ms-auto"
-            type="search"
-            placeholder="Search notes..."
-            style={{ maxWidth: '300px' }}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} // Set the search term
-          />
+          {/* Navbar Links for Large Screens */}
+          <div className="d-none d-lg-flex ms-3">
+            <input
+              className="form-control"
+              type="search"
+              placeholder="Search notes..."
+              style={{ maxWidth: '300px' }}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)} // Set the search term
+            />
+          </div>
 
           {/* Toggle Button for Mobile */}
           <button
