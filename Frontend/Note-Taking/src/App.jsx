@@ -1,5 +1,6 @@
 import './App.css'
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
@@ -30,7 +31,7 @@ function App() {
         });
         const data = await response.json();
         setIsLoggedIn(data.isLoggedIn);
-        setUser(data.user || null);
+        setUser(data.user || null);  
       } catch (error) {
         console.error("Error checking auth status:", error);
       }
